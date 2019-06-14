@@ -1,6 +1,6 @@
 import React from 'react'
 import bcrypt from 'bcryptjs'
-import { validator } from '../../utils'
+import { validator } from '../../utils/validator'
 import register from '../../utils/register'
 import Button from '../button/index.jsx'
 import Input from '../input/index.jsx'
