@@ -17,6 +17,7 @@ class RegistrationForm extends React.Component {
         value: '',
         valid: null,
       },
+      userId: null,
     }
   }
   handleRegistration = event => {
@@ -43,6 +44,20 @@ class RegistrationForm extends React.Component {
     })
   }
   render() {
+    if (this.state.userId) {
+      return (
+        <div id="registration-success">
+          You have registered successfully
+          <p>Where do you want to go next?</p>
+          <Link to="/">
+            <Button title="Home" />
+          </Link>
+          <Link to="/login">
+            <Button title="Login" />
+          </Link>
+        </div>
+      )
+    }
     return (
       <form onSubmit={this.handleRegistration}>
         <Input

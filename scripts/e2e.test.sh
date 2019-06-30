@@ -3,8 +3,10 @@
 # Set environment variables from .env and set NODE_ENV to test
 source <(dotenv-export .env | sed 's/\\n/\n/g')
 export NODE_ENV=test
-printenv
-
+#printenv
+yarn run api:init > /dev/null 2>&1 &
+yarn run api:install > /dev/null 2>&1 &
+yarn run api:serve > /dev/null 2>&1 &
 # Run our web server as a background process
 yarn run serve > /dev/null 2>&1 &
 

@@ -5,4 +5,4 @@ export NODE_ENV=test
 #printenv
 echo $WEB_SERVER_PORT_TEST
 yarn run build
-http-server dist/ -- -p $WEB_SERVER_PORT_TEST --cors
+pushstate-server dist/ $WEB_SERVER_PORT_TEST
