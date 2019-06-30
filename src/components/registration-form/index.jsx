@@ -1,12 +1,13 @@
 import React from 'react'
 import bcrypt from 'bcryptjs'
-import { validator } from '../../utils/validator'
+import validator from '../../utils/validator'
 import register from '../../utils/register'
 import Button from '../button/index.jsx'
 import Input from '../input/index.jsx'
 
 class RegistrationForm extends React.Component {
   constructor(props) {
+    super(props)
     this.state = {
       email: {
         value: '',
@@ -21,29 +22,6 @@ class RegistrationForm extends React.Component {
   handleRegistration = event => {
     event.preventDefault()
     event.stopPropagation()
-    const payload = { 
-      email: this.props.email.value,
-      digest: bcrypt.hashSync(this.props.password.value, 10)
-    };
-    const request = new Request('http://%%API_SERVER_HOST%%:%%API_SERVER_PORT%%/users/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      mode: 'cors',
-      body: JSON.stringify(payload)
-    })
-    fetch(request)
-      .then(response => {
-        if (response.status === 201) {
-          return response.text();
-        } else {
-          throw new Error('Error creating new user');
-        }
-      })
-      .then(this.props.handleSuccess)
-      .catch(console.error)
-  }
     const hasValidParams = this.state.email.valid && this.state.password.valid
     if (!hasValidParams) {
       console.error('Invalid Parameters')
@@ -56,6 +34,7 @@ class RegistrationForm extends React.Component {
       .then(console.log)
       .catch(console.error)
   }
+
   handleInputChange = (name, event) => {
     const value = event.target.value
     const valid = validator[name](value)
