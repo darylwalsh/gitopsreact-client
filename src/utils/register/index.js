@@ -1,12 +1,17 @@
 function register(email, digest) {
   // Send the credentials to the server
   const payload = { email, digest }
-  const request = new Request('http://localhost:8080/users', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    mode: 'cors',
-    body: JSON.stringify(payload),
-  })
+  // http://%%API_SERVER_HOST%%:%%API_SERVER_PORT%%/users/
+  // http://localhost:8080/users
+  const request = new Request(
+    'http://%%API_SERVER_HOST%%:%%API_SERVER_PORT%%/users/',
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      mode: 'cors',
+      body: JSON.stringify(payload),
+    }
+  )
   return fetch(request).then(response => {
     if (response.status === 200) {
       return response.text()
@@ -15,3 +20,5 @@ function register(email, digest) {
     }
   })
 }
+
+export default register
