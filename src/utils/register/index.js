@@ -12,13 +12,16 @@ function register(email, digest) {
       body: JSON.stringify(payload),
     }
   )
-  return fetch(request).then(response => {
-    if (response.status === 200) {
-      return response.text()
-    } else {
-      throw new Error('Error creating new user')
-    }
-  })
+  return fetch(request)
+    .then(response => {
+      if (response.status === 200) {
+        return response.text()
+      } else {
+        throw new Error('Error creating new user')
+      }
+    })
+    .then(userId => this.setState({ userId }))
+    .catch(console.error)
 }
 
 export default register

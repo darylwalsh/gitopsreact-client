@@ -7,6 +7,10 @@
   "author": "Daryl <daryl@blpc.us>",
   "license": "MIT",
   "scripts": {
+    "api:init": "git submodule update --init",
+    "api:install": "yarn install --cwd api",
+    "api:serve": "yarn --cwd api run build && dotenv -e api/env/.env node api/dist/index.js",
+    "api:update": "git submodule update --init --remote",
     "build": "rm -rf dist/ && webpack",
     "serve": "./scripts/serve.sh",
     "test:e2e": "yarn run test:e2e:all",
@@ -21,11 +25,16 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "babel-register": "^6.26.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "chance": "^1.0.18",
     "chromedriver": "^75.0.0",
     "copy-webpack-plugin": "^5.0.3",
     "cucumber": "^5.1.0",
     "dotenv-cli": "^2.0.0",
     "geckodriver": "^1.16.2",
+    "node-fetch": "^2.6.0",
+    "pushstate-server": "^3.1.0",
     "selenium-webdriver": "^4.0.0-alpha.1",
     "string-replace-loader": "^2.2.0",
     "webpack": "^4.33.0",
@@ -34,6 +43,8 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1"
   }
 }
