@@ -1,5 +1,7 @@
 import React from 'react'
 import bcrypt from 'bcryptjs'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import { validator } from '../../utils'
 import Button from '../button/index.jsx'
 import Input from '../input/index.jsx'
@@ -44,54 +46,31 @@ function login(email, digest) {
 }
 
 class LoginForm extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      token: null,
-      email: {
-        value: '',
-        valid: null,
-      },
-      password: {
-        value: '',
-        valid: null,
-      },
-    }
-  }
-
   handleLogin = event => {
     event.preventDefault()
     event.stopPropagation()
 
-    const email = this.state.email.value
-    const password = this.state.password.value
+    const email = this.props.email.value
+    const password = this.props.password.value
 
     retrieveSalt(email)
       .then(salt => bcrypt.hashSync(password, salt))
       .then(digest => login(email, digest))
-      .then(token => this.setState({ token }))
+      .then(this.props.handleSuccess)
       .catch(console.error)
   }
 
-  handleInputChange = (name, event) => {
-    const value = event.target.value
-    const valid = validator[name](value)
-    this.setState({
-      [name]: { value, valid },
-    })
-  }
-
   render() {
-    if (this.state.token) {
+    if (this.props.token) {
       return (
         <div id="login-success">
           <h1>You have logged in successfully!</h1>
           <p>Where do you want to go next?</p>
           <Link to="/">
-            <Button title="Home"></Button>
+            <Button title="Home" />
           </Link>
           <Link to="/profile">
-            <Button title="Profile"></Button>
+            <Button title="Profile" />
           </Link>
         </div>
       )
@@ -103,23 +82,23 @@ class LoginForm extends React.Component {
           type="email"
           name="email"
           id="email"
-          value={this.state.email.value}
-          valid={this.state.email.valid}
-          onChange={this.handleInputChange}
+          value={this.props.email.value}
+          valid={this.props.email.valid}
+          onChange={this.props.handleInputChange}
         />
         <Input
           label="Password"
           type="password"
           name="password"
           id="password"
-          value={this.state.password.value}
-          valid={this.state.password.valid}
-          onChange={this.handleInputChange}
+          value={this.props.password.value}
+          valid={this.props.password.valid}
+          onChange={this.props.handleInputChange}
         />
         <Button
           title="Login"
           id="login-button"
-          disabled={!(this.state.email.valid && this.state.password.valid)}
+          disabled={!(this.props.email.valid && this.props.password.valid)}
         />
       </form>,
       <p>
@@ -129,4 +108,32 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm
+function mapStateToProps(state) {
+  return state.loginForm
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    handleInputChange: (name, event) => {
+      const value = event.target.value
+      const action = {
+        type: 'LoginForm:update',
+        field: name,
+        value,
+      }
+      dispatch(action)
+    },
+    handleSuccess: token => {
+      const action = {
+        type: 'LoginForm:success',
+        token,
+      }
+      dispatch(action)
+    },
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginForm)
