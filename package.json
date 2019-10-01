@@ -107,11 +107,11 @@
     }
   },
   "lint-staged": {
-    "services/client/src/**/*.mdx": [
+    "src/**/*.js": [
       "prettier --write",
       "git add"
     ],
-    "services/client/src/**/*.{js,jsx,css,ts,tsx,md}": [
+    "src/**/*.{js,jsx,css,ts,tsx,md}": [
       "prettier --write",
       "eslint --fix",
       "git add"
