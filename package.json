@@ -1,6 +1,6 @@
 {
   "name": "gitopsreact-client",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "gitopsreact react front-end",
   "main": "index.js",
   "repository": "git@github.com:darylwalsh/gitopsreact-client.git",
