@@ -4,7 +4,7 @@ module.exports = {
     browser: true,
     node: true,
   },
-  extends: ['plugin:jest/recommended', 'jest-enzyme'],
+  extends: ['plugin:jest/recommended'],
   plugins: ['babel', 'import', 'jsx-a11y', 'react', 'prettier'],
   parser: 'babel-eslint',
   parserOptions: {
@@ -58,7 +58,7 @@ module.exports = {
         ignoreRegExpLiterals: true,
       },
     ], // airbnb is allowing some edge cases
-    'no-console': 'error', // airbnb is using warn
+    'no-console': 'off', // airbnb is using warn
     'no-alert': 'error', // airbnb is using warn
 
     'no-param-reassign': 'off', // Not our taste?

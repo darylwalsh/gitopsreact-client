@@ -14,12 +14,12 @@ Feature: Register User
     And user types in "<password>" in the "#password" element
     Then the "#register-button" element should have a "disabled" attribute
 
-    Examples:
+  Examples:
 
-      | testCase       | email         | password       |
-      | Both Invalid   | invalid-email | shortpw        |
-      | Invalid Email  | invalid-email | abcd1234qwerty |
-      | Short Password | valid@ema.il  | shortpw        |
+  | testCase       | email         | password       |
+  | Both Invalid   | invalid-email | shortpw        |
+  | Invalid Email  | invalid-email | abcd1234qwerty |
+  | Short Password | valid@ema.il  | shortpw        |
 
   Scenario: Valid Input
 

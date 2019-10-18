@@ -83,22 +83,8 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
-        <Route
-          exact
-          path="/register"
-          store={store}
-          render={() => (
-            <RegistrationForm {...store.getState().registrationForm} />
-          )}
-        />
-        ,
-        <Route
-          exact
-          path="/login"
-          store={store}
-          render={() => <LoginForm {...store.getState().loginForm} />}
-        />
-        ,
+        <Route exact path="/register" component={RegistrationForm} />
+        <Route exact path="/login" component={LoginForm} />
       </Switch>
     </BrowserRouter>
   </Provider>,

@@ -67,10 +67,10 @@ class LoginForm extends React.Component {
           <h1>You have logged in successfully!</h1>
           <p>Where do you want to go next?</p>
           <Link to="/">
-            <Button title="Home" />
+            <Button title="Home"></Button>
           </Link>
           <Link to="/profile">
-            <Button title="Profile" />
+            <Button title="Profile"></Button>
           </Link>
         </div>
       )

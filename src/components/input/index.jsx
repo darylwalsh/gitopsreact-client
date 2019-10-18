@@ -9,6 +9,7 @@ function getIndicatorColor(state) {
 
 function Input(props) {
   return (
+    // eslint-disable-next-line jsx-a11y/label-has-for
     <label>
       {props.label}
       <input
@@ -23,8 +24,7 @@ function Input(props) {
           height: '20px',
           width: '20px',
           backgroundColor: getIndicatorColor(props),
-        }}
-      />
+        }}></div>
     </label>
   )
 }

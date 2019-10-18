@@ -1,13 +1,14 @@
-import { After, Before } from 'cucumber'
-import webdriver from 'selenium-webdriver'
+import { After, Before } from 'cucumber';
+import webdriver from 'selenium-webdriver';
 
-Before(function() {
+
+Before(function () {
   this.driver = new webdriver.Builder()
-    .forBrowser(process.env.TEST_BROWSER || 'firefox')
-    .build()
-  return this.driver
-})
+    .forBrowser(process.env.TEST_BROWSER || "chrome")
+    .build();
+  return this.driver;
+});
 
-After(function() {
-  this.driver.quit()
-})
+After(function () {
+  this.driver.quit();
+});

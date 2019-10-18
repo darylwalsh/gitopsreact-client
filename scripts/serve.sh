@@ -1,8 +1,9 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
 # Set environment variables from .env and set NODE_ENV to test
-source <(dotenv-export .env | sed 's/\\n/\n/g')
+source <(dotenv-export | sed 's/\\n/\n/g')
 export NODE_ENV=test
-#printenv
-echo $WEB_SERVER_PORT_TEST
+
 yarn run build
-pushstate-server dist/ $WEB_SERVER_PORT_TEST
+
+pushstate-server -d 'dist' -p $WEB_SERVER_PORT_TEST

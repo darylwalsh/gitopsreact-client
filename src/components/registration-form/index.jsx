@@ -43,10 +43,10 @@ class RegistrationForm extends React.Component {
           <h1>You have registered successfully!</h1>
           <p>Where do you want to go next?</p>
           <Link to="/">
-            <Button title="Home" />
+            <Button title="Home"></Button>
           </Link>
           <Link to="/login">
-            <Button title="Login" />
+            <Button title="Login"></Button>
           </Link>
         </div>
       )

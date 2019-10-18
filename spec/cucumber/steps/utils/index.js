@@ -1,20 +1,20 @@
-import Chance from 'chance'
-const chance = new Chance()
+import Chance from 'chance';
+const chance = new Chance();
 
-function generateSampleData(type, valid = true) {
+function generateSampleData (type, valid = true) {
   switch (type) {
     case 'email':
       return valid ? chance.email() : chance.string()
-      break
+      break;
     case 'password':
-      return valid
-        ? chance.string({ length: 13 })
-        : chance.string({ length: 5 })
-      break
+      return valid ? chance.string({ length: 13 }) : chance.string({ length: 5 });
+      break;
     default:
       throw new Error('Unsupported data type')
-      break
+      break;
   }
 }
 
-export { generateSampleData }
+export {
+  generateSampleData,
+}
