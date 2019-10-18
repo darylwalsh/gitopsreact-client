@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/daryl-walsh/gitopsreact-client/compare/v0.1.6...v0.1.7) (2019-10-18)
+
+
+### Features
+
+* **api:** connect react gui to express api ([e47c450](https://github.com/daryl-walsh/gitopsreact-client/commit/e47c45051aabec48233041f52a0bc4da4a55e86f))
+
 ### [0.1.6](https://github.com/daryl-walsh/gitopsreact-client/compare/v0.1.5...v0.1.6) (2019-10-01)
 
 ### [0.1.5](https://github.com/daryl-walsh/gitopsreact-client/compare/v0.1.4...v0.1.5) (2019-10-01)

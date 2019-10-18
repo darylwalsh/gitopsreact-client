@@ -1,6 +1,6 @@
 {
   "name": "gitopsreact-client",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "React Client for GitOpsReact",
   "main": "index.js",
   "repository": "git@github.com:daryl-walsh/gitopsreact-client.git",
